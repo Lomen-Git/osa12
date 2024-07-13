@@ -1,0 +1,14 @@
+services:
+  mongo:
+    image: initialized-mongo
+    ports:
+     - 3456:27017
+  redis:
+    image: redis:alpine
+    ports:
+     - 6379:6379
+
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_DATABASE: the_datab

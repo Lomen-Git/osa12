@@ -1,0 +1,147 @@
+Script started on 2024-07-12 20:13:12+03:00 [TERM="xterm-256color" TTY="/dev/pts/3" COLUMNS="146" LINES="24"]
+[?2004h]0;tom@tom-ThinkPad-T450: ~[01;32mtom[00m:[01;34m~[00m$ container[K[K[K[K[K[K[K[K[Kdocker container ls
+[?2004lCONTAINER ID   IMAGE               COMMAND                  CREATED       STATUS       PORTS                     NAMES
+90bba947fce6   initialized-mongo   "docker-entrypoint.s…"   2 hours ago   Up 2 hours   0.0.0.0:3456->27017/tcp   todo-backend-mongo-1
+[?2004h]0;tom@tom-ThinkPad-T450: ~[01;32mtom[00m:[01;34m~[00m$ docker exec -it todo-backend-mongo-1 bash
+[?2004l[?2004hroot@90bba947fce6:/# show      mono go
+[?2004lbash: mongo: command not found
+[?2004hroot@90bba947fce6:/# mongo -u root -p example
+[?2004lbash: mongo: command not found
+[?2004hroot@90bba947fce6:/# ls
+[?2004lbin   data  docker-entrypoint-initdb.d	home	    lib    lib64   media  opt	root  sbin  sys  usr
+boot  dev   etc				js-yaml.js  lib32  libx32  mnt	  proc	run   srv   tmp  var
+[?2004hroot@90bba947fce6:/# cd   user  r
+[?2004l[?2004hroot@90bba947fce6:/usr# ls
+[?2004lbin  games  include  lib  lib32  lib64	libexec  libx32  local	sbin  share  src
+[?2004hroot@90bba947fce6:/usr# cd src
+[?2004l[?2004hroot@90bba947fce6:/usr/src# ls
+[?2004l[?2004hroot@90bba947fce6:/usr/src# ls
+[?2004l[?2004hroot@90bba947fce6:/usr/src# cd ..
+[?2004l[?2004hroot@90bba947fce6:/usr# ext it
+[?2004lexit
+[1m
+What's next:[0m
+    Try Docker Debug for seamless, persistent debugging tools in any container or image → [36mdocker debug todo-backend-mongo-1[0m
+    Learn more at https://docs.docker.com/go/debug-cli/
+[?2004h]0;tom@tom-ThinkPad-T450: ~[01;32mtom[00m:[01;34m~[00m$ docker exec -it todo-backend-mongo-1 bash[C[C[1P bash[1P bash[1P bash[1P bash[1P bash[1P bash[1P bash[1P bash[1P bash[1P bash[1P bash[1P bash[1P bash[1P bash[1P bash[1P bash[1P bash[1P bash[1P bash[1P bashk bashn bashi basht bashi basha bashl bashi bashz bashe bashd bash- bashm basho bashn bashg basho bash[C[C[C[C[C
+[?2004l[1m
+What's next:[0m
+    Try Docker Debug for seamless, persistent debugging tools in any container or image → [36mdocker debug knitialized-mongo[0m
+    Learn more at https://docs.docker.com/go/debug-cli/
+Error response from daemon: No such container: knitialized-mongo
+[?2004h]0;tom@tom-ThinkPad-T450: ~[01;32mtom[00m:[01;34m~[00m$ docker exec -it knitialized-mongo bash[1P[1P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+[?2004l[1m
+What's next:[0m
+    Try Docker Debug for seamless, persistent debugging tools in any container or image → [36mdocker debug itialized-mongo[0m
+    Learn more at https://docs.docker.com/go/debug-cli/
+Error response from daemon: No such container: itialized-mongo
+[?2004h]0;tom@tom-ThinkPad-T450: ~[01;32mtom[00m:[01;34m~[00m$ docker exec -it itialized-mongo bash[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Knitialized-mongo bash
+[?2004l[1m
+What's next:[0m
+    Try Docker Debug for seamless, persistent debugging tools in any container or image → [36mdocker debug initialized-mongo[0m
+    Learn more at https://docs.docker.com/go/debug-cli/
+Error response from daemon: No such container: initialized-mongo
+[?2004h]0;tom@tom-ThinkPad-T450: ~[01;32mtom[00m:[01;34m~[00m$ docker container ls
+[?2004lCONTAINER ID   IMAGE               COMMAND                  CREATED       STATUS       PORTS                     NAMES
+90bba947fce6   initialized-mongo   "docker-entrypoint.s…"   2 hours ago   Up 2 hours   0.0.0.0:3456->27017/tcp   todo-backend-mongo-1
+[?2004h]0;tom@tom-ThinkPad-T450: ~[01;32mtom[00m:[01;34m~[00m$ docker exec -it todo-backend-mongo-1 bash
+[?2004l[?2004hroot@90bba947fce6:/# mongo --host localhost --port 27017
+[?2004lbash: mongo: command not found
+[?2004hroot@90bba947fce6:/# mongosh --host localhost --port 20 7017
+[?2004l]0;mongosh mongodb://localhost:27017/?directConnection=true&serverSelectionTimeoutMS=2000Current Mongosh Log ID:	6691665e0f35b097a2149f47
+Connecting to:		[1m[32mmongodb://localhost:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.2.10[0m
+Using MongoDB:		7.0.12
+[1m[33mUsing Mongosh[0m:		2.2.10
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+
+To help improve our products, anonymous usage data is collected and sent to MongoDB periodically (https://www.mongodb.com/legal/privacy-policy).
+You can opt-out by running the disableTelemetry() command.
+
+[1G[0J [1G[1G[0Jtest> [7Gshow dbs
+Uncaught [1m[31mMongoServerError[0m[1m[31m[Unauthorized][0m: Command listDatabases requires authentication
+[1G[0Jtest> [7Gmongosh u-[1G[0Jtest> mongosh u[16G[1G[0Jtest> mongosh [15G-u rot[1G[0Jtest> mongosh -u ro[20Got -p example
+Uncaught:
+[1m[31mSyntaxError[0m: Missing semicolon. (1:10)
+
+[0m[31m[1m>[22m[39m[90m 1 |[39m mongosh [33m-[39mu root [33m-[39mp example[0m
+[0m [90m   |[39m           [31m[1m^[22m[39m[0m
+[0m [90m 2 |[39m[0m
+
+[1G[0Jtest> [7Gmongosh -u [32m"[39m[1G[0Jtest> mongosh -u [18G[1G[0Jtest> mongosh -u[17G; root -p.[1G[0Jtest> mongosh -u; root -p[26G; example
+Uncaught [1m[31mReferenceError[0m: mongosh is not defined
+[1G[0Jtest> [7Gbd[1G[0Jtest> b[8G[1G[0Jtest> [7Gdb.auth [1G[0Jtest> db.auth[14G([32m"[39m[32mr[39m[32mo[39m[32mo[39m[32mt[39m[32m"[39m, [32m"[39m[32me[39m[32mx[39m[32ma[39m[32mm[39m[32mp[39m[32ml[39m[32me[39m[32m"[39m)
+Uncaught [1m[31mMongoServerError[0m[1m[31m[AuthenticationFailed][0m: Authentication failed.
+[1G[0Jtest> [7Gdb.auth([1G[0Jtest> db.auth[14G[1G[0Jtest> db.aut[13G[1G[0Jtest> db.au[12G[1G[0Jtest> db.a[11G[1G[0Jtest> db.[10G[1G[0Jtest> db[9G[1G[0Jtest> d[8G[1G[0Jtest> [7Guse admin
+switched to db admin
+[1G[0Jadmin> [8Gdb.auth([1G[0Jadmin> db.auth[15G[1G[0Jadmin> db.aut[14G[1G[0Jadmin> db.au[13G[1G[0Jadmin> db.a[12G[1G[0Jadmin> db.[11G[1G[0Jadmin> db[10G[1G[0Jadmin> d[9G[1G[0Jadmin> [8G[1G[0Jadmin> use admin[17G[1G[0Jadmin> mongosh -u; root -p; example[36G[1G[0Jadmin> use admin[17G[1G[0Jadmin> [8G[1G[0Jadmin> use admin[17G[1G[0Jadmin> mongosh -u; root -p; example[36G[1G[0Jadmin> use admin[17G[1G[0Jadmin> [8Gdb.auth([32m"[39m[32mr[39m[32mo[39m[32mo[39m[32mt[39m[32m"[39m, [32m"[39m[32me[39m[32mx[39m[32ma[39m[32mm[39m[32mp[39m[32ml[39m[32me[39m[32m"[39m)
+{ ok: [33m1[39m }
+[1G[0Jadmin> [8Gdb.[1G[0Jadmin> db[10G[1G[0Jadmin> d[9G[1G[0Jadmin> [8Gsohw [1G[0Jadmin> sohw[12G[1G[0Jadmin> soh[11G[1G[0Jadmin> so[10G[1G[0Jadmin> s[9Ghow dbs
+[1madmin[0m         100.00 KiB
+[1mconfig[0m         96.00 KiB
+[1mlocal[0m          72.00 KiB
+[1mthe_database[0m   72.00 KiB
+[1G[0Jadmin> [8Guse the database
+switched to db the
+[1G[0Jthe> [6Gcd ..
+Uncaught:
+[1m[31mSyntaxError[0m: Unexpected token (1:4)
+
+[0m[31m[1m>[22m[39m[90m 1 |[39m cd [33m.[39m[33m.[39m[0m
+[0m [90m   |[39m     [31m[1m^[22m[39m[0m
+[0m [90m 2 |[39m[0m
+
+[1G[0Jthe> [6Gcd..
+Uncaught:
+[1m[31mSyntaxError[0m: Unexpected token (1:3)
+
+[0m[31m[1m>[22m[39m[90m 1 |[39m cd[33m.[39m[33m.[39m[0m
+[0m [90m   |[39m    [31m[1m^[22m[39m[0m
+[0m [90m 2 |[39m[0m
+
+[1G[0Jthe> [6Guse the_database
+switched to db the_database
+[1G[0Jthe_database> [15Gshow collections
+[1mtodos[0m
+[1G[0Jthe_database> [15Gdb.todos.insert[1G[0Jthe_database> db.todos.inser[29GtOne(
+[1G[0J... [5G[1G[0J... db.todos.insertOne([24G[1G[0J... [5G{text[33mtext[39m: [32m"[39m[32mI[39m[32mn[39m[32mc[39m[32mr[39m[32me[39m[32ma[39m[32ms[39m[32me[39m [32mt[39m[32mh[39m[32me[39m [32mn[39m[32mu[39m[32mm[39m[32mb[39m[32me[39m[32mr[39m [32mo[39m[32mf[39m [32mt[39m[32mo[39m[32mo[39m[32ml[39m[32ms[39m [32mi[39m[32mn[39m [32mm[39m[32my[39m [32mt[39m[32mo[39m[32mo[39m[32ml[39m [32mb[39m[32me[39m[32ml[39m[32mt[39m[32m"[39m, d[36mdo[39mdone: fale[1G[0J... {[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: fal[69Gs[33mfalse[39m][1G[0J... {[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: [33mfalse[39m[71G}=[1G[0J... {[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: [33mfalse[39m}[72G)
+{
+  acknowledged: [33mtrue[39m,
+  insertedId: ObjectId([32m'669168b00f35b097a2149f48'[39m)
+}
+[1G[0Jthe_database> [15Gdb.todos.find({][1G[0Jthe_database> db.todos.find({[30G})
+[
+  {
+    _id: ObjectId([32m'66914e560c8250685a149f48'[39m),
+    text: [32m'Write code'[39m,
+    done: [33mtrue[39m
+  },
+  {
+    _id: ObjectId([32m'66914e560c8250685a149f49'[39m),
+    text: [32m'Learn about containers'[39m,
+    done: [33mfalse[39m
+  },
+  {
+    _id: ObjectId([32m'669153009189db20c9f9ee51'[39m),
+    text: [32m'I solemny swear that I am up to no good'[39m,
+    done: [33mfalse[39m,
+    __v: [33m0[39m
+  },
+  {
+    _id: ObjectId([32m'669168b00f35b097a2149f48'[39m),
+    text: [32m'Increase the number of tools in my tool belt'[39m,
+    done: [33mfalse[39m
+  }
+]
+[1G[0Jthe_database> [15Gexit
+[?2004hroot@90bba947fce6:/# exit
+[?2004lexit
+[1m
+What's next:[0m
+    Try Docker Debug for seamless, persistent debugging tools in any container or image → [36mdocker debug todo-backend-mongo-1[0m
+    Learn more at https://docs.docker.com/go/debug-cli/
+[?2004h]0;tom@tom-ThinkPad-T450: ~[01;32mtom[00m:[01;34m~[00m$ exit
+[?2004lexit
+
+Script done on 2024-07-12 20:33:19+03:00 [COMMAND_EXIT_CODE="0"]
