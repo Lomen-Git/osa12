@@ -24,7 +24,7 @@ const increaseByOne = async () => {
     let todoCountNum;
     let todoCount = await getAsync('added_todos');
 
-    console.log(`Koitetiin hake count, se olis: ${todoCount}, ja typeof: ${typeof todoCount}`);
+    console.log(`Haloo !? Olen kontissA.${todoCount}`);
 
     if (todoCount === null || Number(todoCount) === 0) {
         todoCountNum = 1;
@@ -35,6 +35,7 @@ const increaseByOne = async () => {
 
     await setAsync('added_todos', todoCountNum);
     return todoCountNum;
+
   } catch (error) {
     console.log('ei onnistunut')
     throw error;

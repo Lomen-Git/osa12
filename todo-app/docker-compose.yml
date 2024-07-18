@@ -1,0 +1,63 @@
+version: '3.8'
+
+services:
+  # Frontend
+  front:
+    image: todo-front
+    build:
+      context: ./todo-frontend
+      dockerfile: Dockerfile
+    container_name: todo-front
+    expose:
+      - 80
+
+  # Backend
+  server:
+    image: todo-back
+    build:
+      context: ./todo-backend
+      dockerfile: Dockerfile
+    environment:
+      - REDIS_URL=redis://redis:6379
+      - MONGO_URL=mongodb://root:example@mongo:27017/the_database
+    expose:
+      - 3000
+    depends_on:
+      - mongo
+      - redis
+
+  # Database
+  mongo:
+    image: initialized-mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_DATABASE: the_database
+    volumes:
+      - mongo_data:/data/db
+    expose:
+      - 27017
+
+  # Redis
+  redis:
+    image: redis:alpine
+    command: ['redis-server', '--appendonly', 'yes']
+    volumes:
+      - redis_data:/data
+    expose:
+      - 6379
+
+  # Reverse proxy
+  nginx:
+    image: nginx:1.20.1
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - 8080:80
+    depends_on:
+      - front
+      - server
+
+volumes:
+  mongo_data:
+  redis_data:

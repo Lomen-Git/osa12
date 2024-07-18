@@ -1,0 +1,66 @@
+services:
+  # Frontend
+  front:
+    image: todo-front-dev
+    build:
+      context: ./todo-frontend
+      dockerfile: dev.Dockerfile
+    volumes:
+      - ./todo-frontend:/usr/src/app
+    #ports:
+      # Käytetään vain reverse proxya
+      #- 5173:5173
+    container_name: todo-front-dev
+  debug-helper:
+    image: busybox
+
+  # DB
+  mongo:
+    image: initialized-mongo
+    ports:
+      - 3456:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_DATABASE: the_database
+
+  # Redis
+  redis:
+    image: redis:alpine
+    ports:
+      - 6379:6379
+    command: ['redis-server', '--appendonly', 'yes']
+    volumes:
+      - ./redis_data:/data
+
+  # Server  
+  server:
+    image: todo-back-dev
+    build:
+      context: ./todo-backend
+      dockerfile: dev.Dockerfile
+    volumes:
+      - ./todo-backend:/usr/src/app
+    #ports:
+      # Käytetään vain reverse proxya
+      #- 3000:3000
+    environment: 
+      - REDIS_URL=redis://redis:6379
+      - MONGO_URL=mongodb://root:example@mongo:27017/the_database
+    depends_on:
+      - mongo
+      - redis
+
+  # Reverse proxy
+  nginx:
+    image: nginx:1.20.1
+    volumes:
+      - ./nginx.dev.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - 8080:80
+    container_name: reverse-proxy
+    depends_on:
+      - front
+      - mongo
+      - redis
+      - server

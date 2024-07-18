@@ -62,7 +62,6 @@ singleRouter.delete('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
   const { text, done } = req.body;
 
-  console.log(`nyt pitäisi muokata todo: ${text} ja ${done}`);
   Todo.findByIdAndUpdate(req.params.id, { text, done}, { new: true })
     .then(updatedTodo => res.json(updatedTodo))
 });
