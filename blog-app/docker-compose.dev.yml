@@ -1,0 +1,62 @@
+services:
+  # Frontend
+  front:
+    image: blog-front-dev
+    build:
+      context: ./blog-front
+      dockerfile: dev.Dockerfile
+    # Heijastetaan blog-front kansion muutokset konttiin (kehitys lokaalisti)
+    volumes:
+      - ./blog-front:/usr/src/app
+    # Ports pois kun laitetaan reverse proxy
+    #ports:
+     # - 5173:5173
+    container_name: blog-front-dev
+
+  # debug-helper busybox
+
+  # Tietokanta
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "666:5432"
+    container_name: blog-db
+    #volumes:
+      #- ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  # Server  
+  server:
+    image: blog-back-dev
+    build:
+      context: ./blog-back
+      dockerfile: dev.Dockerfile
+    volumes:
+      - ./blog-back:/usr/src/app
+      - /usr/src/app/node_modules
+    #ports:
+      # Käytetään vain reverse proxya
+      #- 3001:3001
+    container_name: blog-back-dev
+    environment: 
+      DATABASE_URL: ${DATABASE_URL}
+      NODE_ENV: development
+    depends_on:
+      - db
+
+  # Reverse proxy
+  nginx:
+    image: nginx:1.20.1
+    volumes:
+      - ./nginx.dev.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - 8080:80
+    container_name: reverse-proxy
+    depends_on:
+      - front
+      - db
+      - server

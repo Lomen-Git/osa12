@@ -1,0 +1,54 @@
+services:
+  # Frontend
+  front:
+    image: blog-front
+    build:
+      context: ./blog-front
+      dockerfile: Dockerfile
+    container_name: blog-front
+    expose:
+      - 80
+
+  # Tietokanta
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    #ports:
+     # - "666:5432"
+    container_name: blog-db
+    expose:
+      - 666
+
+  # Server  
+  server:
+    image: blog-back
+    build:
+      context: ./blog-back
+      dockerfile: Dockerfile
+    volumes:
+      - ./blog-back:/usr/src/app
+      - /usr/src/app/node_modules
+    container_name: blog-back
+    environment: 
+      DATABASE_URL: ${DATABASE_URL}
+      NODE_ENV: production
+    expose:
+      - 3001
+    depends_on:
+      - db
+
+  # Reverse proxy
+  nginx:
+    image: nginx:1.20.1
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./front-end/build:/usr/share/nginx/html:ro
+    ports:
+      - 8080:80
+    container_name: reverse-proxy
+    depends_on:
+      - server
